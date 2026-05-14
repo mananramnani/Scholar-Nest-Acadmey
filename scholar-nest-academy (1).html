@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholar Nest Academy — Where Young Minds Grow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1F4E;
+    --navy-deep: #071440;
+    --gold: #F5C518;
+    --gold-light: #FDE97A;
+    --gold-pale: #FFF8D6;
+    --white: #FFFFFF;
+    --off-white: #F9F8F4;
+    --text-muted: #6B7280;
+    --text-dark: #1A1A2E;
+    --border: rgba(11,31,78,0.1);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy-deep);
+    color: var(--white);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(245,197,24,0.08);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(245,197,24,0.06);
+  }
+
+  .logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .logo-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--gold);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo-icon svg { width: 32px; height: 32px; }
+
+  .logo-text { text-align: left; }
+  .logo-text .brand { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .logo-text .sub { font-size: 11px; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-top: 2px; }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .tagline span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+  }
+
+  .cta-primary {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.2px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(245,197,24,0.35);
+  }
+
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(245,197,24,0.45); }
+  .cta-primary .cta-small { display: block; font-size: 11px; font-weight: 500; opacity: 0.7; margin-top: 2px; }
+
+  /* SECTION */
+  .section { padding: 32px 20px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* LINKS GRID */
+  .links-section {
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--white);
+    margin-bottom: 10px;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .link-card:last-child { margin-bottom: 0; }
+  .link-card:hover { background: rgba(255,255,255,0.1); transform: translateX(3px); }
+
+  .link-icon {
+    width: 42px; height: 42px;
+    background: var(--gold);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .link-icon svg { width: 20px; height: 20px; }
+
+  .link-info { flex: 1; }
+  .link-info .link-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .link-info .link-desc { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  .link-arrow { color: rgba(255,255,255,0.3); font-size: 18px; }
+
+  /* SUBJECTS */
+  .subjects-section { background: var(--navy); }
+
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .subject-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .subject-pill .subj-emoji { font-size: 20px; display: block; margin-bottom: 4px; }
+
+  /* WHY US */
+  .why-section { background: rgba(255,255,255,0.03); }
+
+  .why-grid { display: flex; flex-direction: column; gap: 10px; }
+
+  .why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .why-dot {
+    width: 28px; height: 28px;
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .why-text .why-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .why-text .why-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* OFFER BANNER */
+  .offer-banner {
+    background: linear-gradient(135deg, var(--gold) 0%, #E8A800 100%);
+    margin: 0 20px;
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    color: var(--navy-deep);
+  }
+
+  .offer-banner .offer-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+  .offer-banner .offer-sub { font-size: 13px; font-weight: 500; opacity: 0.75; margin-bottom: 16px; }
+  .offer-banner .offer-badge {
+    display: inline-block;
+    background: var(--navy-deep);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .offer-cta {
+    display: block;
+    background: var(--navy-deep);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .offer-cta:hover { opacity: 0.85; }
+
+  /* TESTIMONIAL */
+  .testi-section { padding: 32px 20px; background: var(--navy); }
+
+  .testi-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+
+  .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
+  .testi-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 12px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+  }
+
+  .testi-name { font-size: 13px; font-weight: 600; }
+  .testi-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--navy-deep);
+    padding: 32px 20px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .footer-tagline { font-size: 12px; color: var(--gold); margin-bottom: 20px; font-weight: 500; letter-spacing: 0.5px; }
+
+  .footer-contact a {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .footer-contact a:hover { color: var(--gold); }
+
+  .social-row {
+    display: flex; gap: 10px; justify-content: center;
+    margin: 20px 0 0;
+  }
+
+  .social-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 14px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background 0.15s;
+  }
+
+  .social-btn:hover { background: rgba(245,197,24,0.15); color: var(--gold); }
+
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 24px; }
+
+  /* Floating WhatsApp button */
+  .wa-float {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.5);
+    text-decoration: none;
+    z-index: 100;
+    transition: transform 0.15s;
+  }
+
+  .wa-float:hover { transform: scale(1.08); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 16px rgba(37,211,102,0.5)} 50%{box-shadow:0 4px 28px rgba(37,211,102,0.8)} }
+  .wa-float { animation: pulse 2.5s infinite; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="logo-wrap">
+    <div class="logo-icon">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="14" width="26" height="14" rx="2" fill="#0B1F4E"/>
+        <rect x="6" y="16" width="8" height="10" rx="1" fill="#0B1F4E" stroke="#0B1F4E" stroke-width="0.5"/>
+        <rect x="18" y="16" width="8" height="10" rx="1" fill="#0B1F4E" stroke="#0B1F4E" stroke-width="0.5"/>
+        <path d="M16 14 C16 14 10 10 10 6 C10 4 12 3 14 4 C15 4.5 16 5 16 5 C16 5 17 4.5 18 4 C20 3 22 4 22 6 C22 10 16 14 16 14Z" fill="#0B1F4E"/>
+        <circle cx="16" cy="6.5" r="2" fill="#F5C518"/>
+        <path d="M16 2 L17 5 L16 4.5 L15 5Z" fill="#0B1F4E"/>
+        <path d="M19 1.5 C19 1.5 18.5 4 16 4.5" stroke="#0B1F4E" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="brand">Scholar Nest Academy</div>
+      <div class="sub">Est. Jaipur</div>
+    </div>
+  </div>
+
+  <h1 class="tagline">Where Young<br>Minds <span>Grow</span></h1>
+  <p class="hero-sub">Quality tuition for Nursery to Class 8 · All subjects · Small batches · Personal attention</p>
+
+  <div class="badge-row">
+    <span class="badge">✦ Admissions Open</span>
+    <span class="badge">Limited Seats</span>
+    <span class="badge">Free Demo Class</span>
+  </div>
+
+  <a href="tel:+91XXXXXXXXXX" class="cta-primary">
+    📞 Book a Free Demo Class
+    <span class="cta-small">Call / WhatsApp us today</span>
+  </a>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="section links-section">
+  <p class="section-label">Quick Links</p>
+
+  <a href="tel:+91XXXXXXXXXX" class="link-card">
+    <div class="link-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B1F4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.22 2 2 0 012 .04h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 14.92z"/>
+      </svg>
+    </div>
+    <div class="link-info">
+      <div class="link-title">Call / WhatsApp</div>
+      <div class="link-desc">Speak to us directly — we're happy to help</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://instagram.com/ScholarNestAcademy" class="link-card">
+    <div class="link-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B1F4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </div>
+    <div class="link-info">
+      <div class="link-title">Instagram</div>
+      <div class="link-desc">@ScholarNestAcademy · Tips, updates & more</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://facebook.com/ScholarNestAcademy" class="link-card">
+    <div class="link-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B1F4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+      </svg>
+    </div>
+    <div class="link-info">
+      <div class="link-title">Facebook Page</div>
+      <div class="link-desc">@ScholarNestAcademy · Join our community</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+
+  <a href="https://maps.google.com" class="link-card">
+    <div class="link-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B1F4E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+    </div>
+    <div class="link-info">
+      <div class="link-title">Find Us on Map</div>
+      <div class="link-desc">Visit our centre in Jaipur</div>
+    </div>
+    <div class="link-arrow">›</div>
+  </a>
+</div>
+
+<!-- SUBJECTS -->
+<div class="section subjects-section">
+  <p class="section-label">Subjects We Teach</p>
+  <div class="subjects-grid">
+    <div class="subject-pill"><span class="subj-emoji">🔢</span>Maths</div>
+    <div class="subject-pill"><span class="subj-emoji">🔬</span>Science</div>
+    <div class="subject-pill"><span class="subj-emoji">📖</span>English</div>
+    <div class="subject-pill"><span class="subj-emoji">🇮🇳</span>Hindi</div>
+    <div class="subject-pill"><span class="subj-emoji">🌍</span>Soc. Studies</div>
+    <div class="subject-pill"><span class="subj-emoji">🌱</span>All Subjects</div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="section why-section">
+  <p class="section-label">Why Parents Choose Us</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-dot">👶</div>
+      <div class="why-text">
+        <div class="why-title">Nursery to Class 8</div>
+        <div class="why-desc">All grades under one roof with age-appropriate teaching</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">🎯</div>
+      <div class="why-text">
+        <div class="why-title">Personal Attention</div>
+        <div class="why-desc">Small batch sizes so every child gets the focus they deserve</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">💡</div>
+      <div class="why-text">
+        <div class="why-title">Concept Clarity First</div>
+        <div class="why-desc">We build strong basics, not just exam shortcuts</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">📊</div>
+      <div class="why-text">
+        <div class="why-title">Regular Progress Reports</div>
+        <div class="why-desc">Parents always kept informed — no surprises at exam time</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">🏡</div>
+      <div class="why-text">
+        <div class="why-title">Safe & Nurturing Environment</div>
+        <div class="why-desc">A warm nest where children feel confident to learn and grow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFER BANNER -->
+<div style="padding: 0 0 32px;">
+  <div class="offer-banner">
+    <div class="offer-badge">🎓 Limited Seats Available</div>
+    <div class="offer-title">Free Demo Class</div>
+    <div class="offer-sub">Try before you enrol — absolutely no obligation</div>
+    <a href="tel:+91XXXXXXXXXX" class="offer-cta">Book Your Free Class Now →</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-section">
+  <p class="section-label">What Parents Say</p>
+
+  <div class="testi-card">
+    <div class="testi-stars">★★★★★</div>
+    <div class="testi-text">"My daughter was struggling with Maths in Class 4. After joining Scholar Nest, her confidence has improved so much. The teachers give real personal attention — it shows in her results."</div>
+    <div class="testi-author">
+      <div class="testi-avatar">RG</div>
+      <div>
+        <div class="testi-name">Rekha Gupta</div>
+        <div class="testi-role">Parent · Class 4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-card">
+    <div class="testi-stars">★★★★★</div>
+    <div class="testi-text">"Best decision we made this year. The small batch size means my son is never lost in the crowd. We get regular updates which is something other tuitions never did."</div>
+    <div class="testi-author">
+      <div class="testi-avatar">AS</div>
+      <div>
+        <div class="testi-name">Amit Sharma</div>
+        <div class="testi-role">Parent · Class 6</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">Scholar Nest Academy</div>
+  <div class="footer-tagline">Where Young Minds Grow</div>
+
+  <div class="footer-contact">
+    <a href="tel:+91XXXXXXXXXX">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.02 2.22 2 2 0 012 .04h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 14.92z"/></svg>
+      +91-XXXXXXXXXX
+    </a>
+    <a href="#">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      [Your Location], Jaipur
+    </a>
+  </div>
+
+  <div class="social-row">
+    <a href="https://instagram.com/ScholarNestAcademy" class="social-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram
+    </a>
+    <a href="https://facebook.com/ScholarNestAcademy" class="social-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      Facebook
+    </a>
+  </div>
+
+  <div class="footer-copy">© 2025 Scholar Nest Academy · All rights reserved</div>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/91XXXXXXXXXX?text=Hello%2C%20I%27m%20interested%20in%20a%20free%20demo%20class%20at%20Scholar%20Nest%20Academy" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
